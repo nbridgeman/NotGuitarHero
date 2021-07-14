@@ -4,7 +4,7 @@ import random
 pygame.init()
 pygame.font.init()
 pygame.mixer.init()
-pygame.mixer.music.load("Weezer.mp3")
+# pygame.mixer.music.load("DrumBeat.mp3")
 
 from pygame.locals import (
     RLEACCEL,
@@ -55,7 +55,8 @@ class PlayerStrum(pygame.sprite.Sprite):
     def __init__(self):
         super(PlayerStrum, self).__init__()
         self.surf = pygame.Surface((450, 8))
-        self.surf.fill((125, 0, 125))
+        self.surf.set_alpha(100)
+        self.surf.fill((255, 255, 255))
         self.rect = self.surf.get_rect()
         self.rect.center = (COL_D, SCREEN_HEIGHT - 64)
         self.spawn_time = pygame.time.get_ticks()
@@ -139,7 +140,7 @@ def main():
     clock = pygame.time.Clock()
     ADDNOTE = pygame.USEREVENT + 1
     pygame.time.set_timer(ADDNOTE, 750)
-    pygame.mixer.music.play(-1, 0, 0)
+    # pygame.mixer.music.play(-1, 0, 0)
     running = True
     while running:
         for event in pygame.event.get():
